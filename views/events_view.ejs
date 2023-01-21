@@ -1,0 +1,29 @@
+<% try { %>
+    <%- include('partials/header', {user: [firstName, lastName]}) %>
+  <%} catch(error) { %>
+    <%- include('partials/header')%>
+  <%} %>
+
+  <div class="list-group">
+      <% foundEvents.forEach(function(event){ %>
+        <form method="post" action="/update/<%=event._id%>">
+
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%=event.eventName%></h5>
+                <small><%=event.eventMonth + " " + event.eventDay + " " + event.eventYear %></small>
+            </div>
+            <p class="mb-1">
+            <%=event.eventInfo%>
+            </p>
+                <button value="edit" name="update" type="submit" class=" mb-1 btn btn-secondary">Edit Event</button>
+                <button value="delete" name ="update" type="submit" class="mb-1 btn btn-danger">Remove Event</button>  
+        </a>
+    </form>
+     <% }) %>
+
+    
+  </div>
+
+
+  <%- include('partials/footer') %>

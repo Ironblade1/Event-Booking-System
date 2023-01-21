@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Event System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+
+
+</head>
+
+<body>
+  <header>
+    <div class="topnav" style="background-color: #C3C054;;">
+      <a href="/" class="active" style="background-color: #C3C054;">Event Managemnt System</a>
+      <a href="/" >Home</a>
+      <div class="topnav-right">
+        <form class="search-bar" action="/search" method="post">
+          <input type="text" class="form-control" id="usr" placeholder="Search">
+        </form>
+        <%try { %>
+          <%if(user){ %>
+          <a href="/login"><%=user[1]%>, <%=user[0]%></a>
+          <a style="color:#f2f2f2; padding-right: 2rem;" onclick="showDiv()" >Logout </a>
+          <%}%>
+        <%}catch (error) {%>
+          <a href="/login">Login</a>
+          <a style="padding-right: 2rem;" href="/register">Register</a>
+        <% } %>
+
+
+
+      </div>
+    </div>
+  </header>

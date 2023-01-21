@@ -1,0 +1,52 @@
+<% try { %>
+<%- include('partials/header', {user: [firstName, lastName]}) %>
+<%} catch(error) { %>
+<%- include('partials/header')%>
+<%} %>
+
+
+<head>
+    <link href='css/main.css' rel='stylesheet' />
+    <script src='js/main.js'></script>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            
+            var getEvents = <%- JSON.stringify(foundEvents) %>;
+            
+            
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next,today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                initialDate: '<%=date%>',
+                navLinks: true, // can click day/week names to navigate views
+                businessHours: true, // display business hours
+                editable: true,
+                selectable: true,
+                events: getEvents
+            });
+
+            calendar.render();
+        });
+    </script>
+
+</head>
+<div class="left-side">
+    <h1><%=appTitle%></h1>
+    <a href="/<%=appTitle%>/event-submission"><button type="button" class="btn btn-secondary">Add Event</button></a>
+    <a href="/apps/<%=appTitle%>/events"><button type="button" class="btn btn-secondary">Edit Events</button></a>
+    <a href="/apps/<%=appTitle%>/delete"><button type="button" class="btn btn-danger">Delete Category</button></a>
+</div>
+<div id='calendar'></div>
+
+
+
+
+<%- include('partials/footer') %>

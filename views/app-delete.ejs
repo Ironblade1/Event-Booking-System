@@ -1,0 +1,12 @@
+<% try { %>
+<%- include('partials/header', {user: [firstName, lastName]}) %>
+<%} catch(error) { %>
+<%- include('partials/header')%>
+<%} %>
+<form action="/apps/<%=appName%>/delete" method="post">
+    <h1>Are you sure you want to delete <%=appName%></h1>
+    <h4>All events will be delted as well....</h4>
+    <a href="/"> <button type="button" class="btn btn-secondary">Cancel</button></a>
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+<%- include('partials/footer') %>

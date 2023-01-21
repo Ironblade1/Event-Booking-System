@@ -1,0 +1,86 @@
+<% try { %>
+    <%- include('partials/header', {user: [firstName, lastName]}) %>
+  <%} catch(error) { %>
+    <%- include('partials/header')%>
+  <%} %>
+
+
+<form class="event-submission" action="/<%=appTitle%>/event-submission" method="post">
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Event Name</label>
+        <input name="eventName" type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g. Physical Therapy">
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="md-form mx-1 my-1">
+                    <input name="startTime" type="time" id="inputMDEx1" class="form-control">
+                    <label for="inputMDEx1">Start Time</label>
+                </div>
+                
+            </div>
+            <div class="col-lg-3">
+                <div class="md-form mx-1 my-1">
+                    <input name="endTime" type="time" id="inputMDEx1" class="form-control">
+                    <label for="inputMDEx1">End Time</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="exampleFormControlSelect2">Select Month of Event</label>
+                <select name="eventMonth" multiple class="form-control" id="exampleFormControlSelect2">
+                    <option>January</option>
+                    <option>Febuary</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="exampleFormControlSelect2">Select Day of Event</label>
+                <select name="eventDay" multiple class="form-control" id="exampleFormControlSelect12">
+                    <% for(var i = 1; i <= 31; i++ ){ %>
+                    <option><%=i%></option>
+                    <%}%>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="exampleFormControlSelect2">Select Year</label>
+                <select name="eventYear" multiple class="form-control" id="exampleFormControlSelect12">
+                    <% for(var i = 2020; i <= 2025; i++ ){ %>
+                    <option><%=i%></option>
+                    <%}%>
+                </select>
+            </div>
+
+        </div>
+       
+
+
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Additional Information</label>
+        <textarea name="eventInfo" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="e.g. Location, Dress Code, etc."></textarea>
+    </div>
+    <div class="form-group">
+        <button type ="submit" class="btn btn-secondary">Submit</button>
+        <a href="/"><button type="button" class="btn btn-danger">Cancel</button></a>
+    </div>
+    
+</form>
+
+
+
+<%- include('partials/footer') %>
